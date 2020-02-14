@@ -1,4 +1,5 @@
-﻿using Bootstrap.NHMapping;
+﻿using Bootstrap.Core.Config;
+using Bootstrap.NHMapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using MySql.Data.MySqlClient;
@@ -36,7 +37,7 @@ namespace Bootstrap.Core
             {
                 _instance = Fluently.Configure()
                   .Database(MySQLConfiguration.Standard
-                           .ConnectionString("server=localhost;port=3306;user=root;pwd=123456;database=dreambuilder"))
+                           .ConnectionString(ConfigProvider.MySqlConnectionString))
                            .Mappings(m => m.FluentMappings.Add<UserMap>())
                            .BuildSessionFactory();
             }

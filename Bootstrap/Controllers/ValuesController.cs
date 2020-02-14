@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bootstrap.Entity;
+using Bootstrap.Entity.Common;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
 using Unity;
@@ -16,14 +17,14 @@ namespace Bootstrap.Controllers
     {      
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<User>> Get()
+        public ActionResult<HttpResponseType<List<User>>> Get()
         {
             try
             {
                 using (ISession session = sessionFactory.OpenSession())
                 {
                     List<User> list = session.Query<User>().ToList();
-                    return list;
+                    return HttpResponseType.Success(list);
                 }
             }
             catch (Exception ex)
@@ -37,7 +38,7 @@ namespace Bootstrap.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            return Unauthorized();
         }
 
         // POST api/values

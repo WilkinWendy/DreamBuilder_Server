@@ -1,4 +1,5 @@
 ﻿using Bootstrap.Core;
+using Microsoft.Extensions.Configuration;
 using NHibernate;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,8 @@ namespace Bootstrap.Core.UnityConfig
             currentContainer = container;
             RegisterTypes(container);   
         }
-
-        public static void RegisterTypes(IUnityContainer container)
+        
+        private static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterInstance(MysqlSessionFactoryBuilder.getFactory());
         }

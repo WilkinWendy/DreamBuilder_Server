@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
+using Bootstrap.Core.Config;
 using Bootstrap.Core.UnityConfig;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,7 +20,9 @@ namespace Bootstrap
     {
         public Startup(IConfiguration configuration)
         {
+           
             Configuration = configuration;
+            ConfigProvider.SetLocalConfigInfo(configuration);
             UnityConfig.Init();
         }
 
