@@ -2,19 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Bootstrap.Entity;
 using Microsoft.AspNetCore.Mvc;
+using NHibernate;
+using Unity;
 
 namespace Bootstrap.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
-    {
+
+    public class ValuesController : BaseSessionController
+    {      
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<User>> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                using (ISession session = sessionFactory.OpenSession())
+                {
+                    List<User> list = session.Query<User>().ToList();
+                    return list;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+          
         }
 
         // GET api/values/5

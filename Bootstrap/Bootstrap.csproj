@@ -9,7 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentNHibernate" Version="2.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="MySql.Data" Version="8.0.19" />
+    <PackageReference Include="Unity" Version="5.11.3" />
+    <PackageReference Include="Unity.Abstractions" Version="5.11.3" />
+    <PackageReference Include="Unity.RegistrationByConvention" Version="5.11.1" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

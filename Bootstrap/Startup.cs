@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Bootstrap.Core.UnityConfig;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,6 +19,7 @@ namespace Bootstrap
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            UnityConfig.Init();
         }
 
         public IConfiguration Configuration { get; }
@@ -26,6 +28,9 @@ namespace Bootstrap
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
