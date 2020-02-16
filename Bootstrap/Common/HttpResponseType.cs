@@ -40,9 +40,9 @@ namespace Bootstrap.Entity.Common
             };
         }
 
-        public static HttpResponseType<Object> Failure(HttpResponseTypeCode code = HttpResponseTypeCode.Failure, string msg = "失败")
+        public static HttpResponseType<T> Failure<T>(string msg = "失败",HttpResponseTypeCode code = HttpResponseTypeCode.Failure)
         {
-            return new HttpResponseType<Object>()
+            return new HttpResponseType<T>()
             {
                 code = code,
                 message = msg

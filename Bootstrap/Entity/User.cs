@@ -7,7 +7,7 @@ namespace Bootstrap.Entity
 {
     public class User
     {
-        public virtual int id { get; set; }
+        public virtual string id { get; set; }
         public virtual string name { get; set; }
         public virtual string password { get; set; }
     }

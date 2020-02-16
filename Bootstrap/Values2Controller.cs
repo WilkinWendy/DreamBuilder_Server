@@ -13,7 +13,7 @@ namespace Bootstrap.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    public class ValuesController : BaseSessionController
+    public class Values2Controller : BaseSessionController
     {      
         // GET api/values
         [HttpGet]
