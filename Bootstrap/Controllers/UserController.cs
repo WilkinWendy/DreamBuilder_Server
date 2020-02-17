@@ -7,10 +7,12 @@ using Bootstrap.Entity;
 using Bootstrap.Entity.Common;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
+using NSwag.Annotations;
 using Unity;
 
 namespace Bootstrap.Controllers
 {
+    [OpenApiTag("User",Description = "用户类接口")]
     [Route("api/user")]
     [ApiController]
     public class UserController : BaseEntityController<User>
