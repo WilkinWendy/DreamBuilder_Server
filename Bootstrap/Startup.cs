@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using Bootstrap.Core.Config;
+using Bootstrap.Core.Swagger;
 using Bootstrap.Core.UnityConfig;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,9 +33,7 @@ namespace Bootstrap
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-
-            
+            SwaggerConfig.ConfigureServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,7 +47,7 @@ namespace Bootstrap
             {
                 app.UseHsts();
             }
-
+            SwaggerConfig.Configure(app, env);
             app.UseHttpsRedirection();
             app.UseMvc();
         }

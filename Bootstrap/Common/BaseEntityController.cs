@@ -14,7 +14,7 @@ namespace Bootstrap.Common
     /// 针对表对象的通用操作控制器
     /// </summary>
     /// <typeparam name="T">表对象实体泛型</typeparam>
-    public class BaseEntityController<T> : BaseSessionController where T : class
+    public abstract class BaseEntityController<T> : BaseSessionController where T : class
     {
         /// <summary>
         /// 根据主键id获取表实体对象
@@ -22,7 +22,7 @@ namespace Bootstrap.Common
         /// <param name="id">主键id</param>
         /// <returns></returns>
         [HttpGet("getById")]
-        public virtual HttpResponseType<T> GetById([FromQuery] string id)
+        public virtual ActionResult<HttpResponseType<T>> GetById([FromQuery] string id)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace Bootstrap.Common
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost("add")]
-        public virtual HttpResponseType<T> Add(T dto)
+        public virtual ActionResult<HttpResponseType<T>> Add(T dto)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace Bootstrap.Common
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("delete")]
-        public virtual HttpResponseType<bool> DeleteById(string id)
+        public virtual ActionResult<HttpResponseType<bool>> DeleteById(string id)
         {
             try
             {
@@ -96,10 +96,10 @@ namespace Bootstrap.Common
         /// <summary>
         /// 更新表对象，将根据主键来进行唯一判定
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="dto">表对象</param>
         /// <returns></returns>
         [HttpPost("update")]
-        public virtual HttpResponseType<bool> update(T dto)
+        public virtual ActionResult<HttpResponseType<bool>> update(T dto)
         {
             try
             {

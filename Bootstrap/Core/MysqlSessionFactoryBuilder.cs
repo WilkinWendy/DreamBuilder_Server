@@ -22,16 +22,6 @@ namespace Bootstrap.Core
         private static ISessionFactory _instance = null;
         public static ISessionFactory getFactory()
         {
-            //using (MySqlConnection conn = new MySqlConnection("server=localhost:3306;user=root;pwd=123456;database=dreambuilder"))
-            //{
-            //    conn.Open();
-
-
-            //    conn.CreateCommand();
-            //    //conn.
-            //}
-
-
             if (_instance == null)
 
             {

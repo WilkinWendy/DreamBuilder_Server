@@ -11,10 +11,18 @@ using Unity;
 
 namespace Bootstrap.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserController : BaseEntityController<User>
     {
-       
+        /// <summary>
+        /// 根据用户id获取用户信息
+        /// </summary>
+        /// <param name="id">主键id</param>
+        /// <returns></returns>
+        public override ActionResult<HttpResponseType<User>> GetById([FromQuery] string id)
+        {
+            return base.GetById(id);
+        }
     }
 }
