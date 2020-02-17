@@ -49,19 +49,20 @@ namespace Bootstrap.Common
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost("add")]
-        public virtual ActionResult<HttpResponseType<T>> Add(T dto)
+        public virtual ActionResult<HttpResponseType<string>> Add(T dto)
         {
             try
             {
                 using (ISession session = sessionFactory.OpenSession())
                 {
-                    T obj = session.Save(dto) as T;             
+                    string obj = session.Save(dto) as string;
+                    session.Flush();
                     return HttpResponseType.Success(obj);
                 }
             }
             catch (Exception ex)
             {
-                return HttpResponseType.Failure<T>(ex.Message, HttpResponseTypeCode.Exception);
+                return HttpResponseType.Failure<string>(ex.Message, HttpResponseTypeCode.Exception);
             }
         }
 
@@ -84,6 +85,7 @@ namespace Bootstrap.Common
                     }
 
                     session.Delete(query);
+                    session.Flush();
                     return HttpResponseType.Success(true);
                 }
             }

@@ -10,17 +10,22 @@ namespace Bootstrap.Entity
     /// </summary>
     public class User
     {
-        /// <summary>
-        /// 用户id
+       /// <summary>
+        /// 主键
         /// </summary>
-        public virtual string id { get; set; }
-        /// <summary>
+        public virtual string Id { get; set; }
+       /// <summary>
         /// 姓名
         /// </summary>
-        public virtual string name { get; set; }
-        /// <summary>
+        public virtual string Name { get; set; }
+       /// <summary>
         /// 密码
         /// </summary>
-        public virtual string password { get; set; }
+        public virtual string Password { get; set; }
+       /// <summary>
+        /// 创建日期
+        /// </summary>
+        public virtual DateTime? CreateTime { get; set; }
+
     }
 }

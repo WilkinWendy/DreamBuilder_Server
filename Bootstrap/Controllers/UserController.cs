@@ -24,7 +24,18 @@ namespace Bootstrap.Controllers
         /// <returns></returns>
         public override ActionResult<HttpResponseType<User>> GetById([FromQuery] string id)
         {
-            return base.GetById(id);
+            return base.GetById(id);          
+        }
+
+        /// <summary>
+        /// 新增用户
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public override ActionResult<HttpResponseType<string>> Add(User dto)
+        {
+            dto.CreateTime = DateTime.Now;
+            return base.Add(dto);
         }
     }
 }

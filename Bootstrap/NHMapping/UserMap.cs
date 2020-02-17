@@ -11,10 +11,12 @@ namespace Bootstrap.NHMapping
     {
         public UserMap()
         {
-            this.Id(db => db.id).Column("id");
-            this.Map(db => db.name).Column("name");           
-            this.Table("user");
+            Id(db => db.Id).Column("Id").GeneratedBy.UuidHex("D");//主键
+            Map(db => db.Name).Column("Name");//姓名
+            Map(db => db.Password).Column("Password");//密码
+            Map(db => db.CreateTime).Column("CreateTime");//创建日期
 
+            Table("User");
         }
     }
 
